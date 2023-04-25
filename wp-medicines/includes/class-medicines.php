@@ -73,16 +73,13 @@ if ( ! class_exists( 'Medicines' ) ) {
 		}
 
 		/**
-		 * Registers the Custom Product Boxes Product type to WooCommerce
+		 * Registers the CPT for Medicine
 		 *
 		 * @return void
 		 */
 		public function register_medicine_post_type() {
 			// Medicine post Type, registering post type medicines.
 			require_once MED_ABSPATH . 'includes/class-wp-post-medicines.php';
-
-			// Data Store classes.
-			// include_once MED_ABSPATH . 'includes/data/class-medicines-data.php';
 		}
 
 		/**
@@ -102,8 +99,8 @@ if ( ! class_exists( 'Medicines' ) ) {
 			include_once MED_ABSPATH . 'includes/class-med-autoloader.php';
 			// Including core med functions.
 			include_once MED_ABSPATH . 'includes/med-core-functions.php';
-			// include_once MED_ABSPATH . 'public/class-med-public.php';
-			// include_once MED_ABSPATH . 'public/med-template-hooks.php';
+
+			// Including resptAPI endpoints.
 			include_once MED_ABSPATH . 'includes/class-med-endpoints.php';
 
 			if ( is_request( 'admin' ) ) {
@@ -139,13 +136,6 @@ if ( ! class_exists( 'Medicines' ) ) {
 		 */
 		public function load_plugin_textdomain() {
 			load_plugin_textdomain( 'wp-medicines', false, plugin_basename( dirname( MED_PLUGIN_FILE ) ) . '/languages/' );
-		}
-
-		/**
-		 * Function used to Init Template Functions - This makes them pluggable by plugins and themes.
-		 */
-		public function cpb_include_template_functions() {
-			include_once MED_ABSPATH . 'public/cpb-template-functions.php';
 		}
 	}
 }

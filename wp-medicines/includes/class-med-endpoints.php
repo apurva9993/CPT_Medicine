@@ -98,7 +98,6 @@ class Med_Endpoints {
 	 * @return WP_Error|WP_REST_Response
 	 */
 	public function get_medicines_post( $request ) {
-		error_log('message1');
 	    $args = array(
 	        'post_type' => 'medicines',
 	        'posts_per_page' => 10
@@ -107,7 +106,6 @@ class Med_Endpoints {
 	    $query = new WP_Query( $args );
 	    $posts = $query->posts;
 
-	    error_log('POSTS :: ' . print_r( $posts, 1 ));
 	    $response = array();
 
 	    foreach ( $posts as $post ) {
@@ -140,7 +138,6 @@ class Med_Endpoints {
 	public function create_medicine( $request) {
 		$response     = array();
 		$existingData = array();
-		error_log('Request :: ' .print_r($request, 1));
 
 		$title   = $this->get_default_data( $request, 'title' );
 		$content = $this->get_default_data( $request, 'post_content' );
@@ -151,11 +148,7 @@ class Med_Endpoints {
 	        'post_type' => 'medicines',
 	    );
 
-	    
-	    error_log('POST array : ' . print_r($postarr, 1));
-
 	    $post_id = wp_insert_post( $postarr, true );
-	    error_log('POST ID : ' . print_r($post_id, 1));
 	    if (is_wp_error( $post_id ) ) {
 	        return rest_ensure_response( $post_id->get_error_message() );
 	    }

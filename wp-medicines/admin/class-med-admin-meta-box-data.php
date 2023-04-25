@@ -14,7 +14,7 @@ if ( ! defined( 'ABSPATH' ) ) {
 if ( ! class_exists( 'Med_Admin_Meta_Box_Data' ) ) {
 
 	/**
-	 * Product meta-box data for the CPB Product type.
+	 * Product meta-box data for the Custom Post type.
 	 *
 	 * @class    Med_Admin_Meta_Box_Data
 	 * @version  5.9.0
@@ -33,7 +33,6 @@ if ( ! class_exists( 'Med_Admin_Meta_Box_Data' ) ) {
 			// Configuration Controller.
 
 			// Processes and saves data.
-			// add_action( 'woocommerce_admin_process_product_object', array( __CLASS__, 'cpb_process_data' ) );
 			add_action( 'save_post', array( $this, 'process_post_data' ) );
 
 		}
@@ -62,11 +61,6 @@ if ( ! class_exists( 'Med_Admin_Meta_Box_Data' ) ) {
 		    $med_price = get_post_meta( $post->ID, 'price', true );
 		    $mfg_company = get_post_meta( $post->ID, 'med_mfg_company', true );
 		    $med_type = get_post_meta( $post->ID, 'med_type', true );
-
-		    error_log('med_expiry : '. $med_expiry);
-		    error_log('med_price : '. $med_price);
-		    error_log('mfg_company : '. $mfg_company);
-		    error_log('med_type : '. $med_type);
 
 			?>
 		    <div>

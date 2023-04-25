@@ -1,10 +1,10 @@
 <?php
 /**
- * CPB Core Functions
+ * Medicine Core Functions
  *
  * General core functions available on both the front-end and admin.
  *
- * @package CPB\Functions
+ * @package Medicines\Functions
  * @version 4.0.0
  */
 
